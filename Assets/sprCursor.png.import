@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsf5l05k5bjnb"
-path="res://.godot/imported/AK47.png-b160802100d58c2bd6b73f40cb4bb708.ctex"
+uid="uid://cxigityyo4guc"
+path="res://.godot/imported/sprCursor.png-db296bf1ceb67267d21ac370f0d7b5a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/AK47.png"
-dest_files=["res://.godot/imported/AK47.png-b160802100d58c2bd6b73f40cb4bb708.ctex"]
+source_file="res://Assets/sprCursor.png"
+dest_files=["res://.godot/imported/sprCursor.png-db296bf1ceb67267d21ac370f0d7b5a6.ctex"]
 
 [params]
 
