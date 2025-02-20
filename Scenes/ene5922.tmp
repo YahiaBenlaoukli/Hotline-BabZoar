@@ -1,0 +1,220 @@
+[gd_scene load_steps=14 format=3 uid="uid://bj2llr1tmp1vi"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_cfqk8"]
+[ext_resource type="Texture2D" uid="uid://dssglxwkbwvnl" path="res://Assets/Mc/main_character-Idle-Sheet.png" id="2_simp5"]
+[ext_resource type="Texture2D" uid="uid://dl1r04kjl0c02" path="res://Assets/Enemies/Enemie1/enemy1-Idle.png" id="3_fkugd"]
+[ext_resource type="Texture2D" uid="uid://cpleceuf1teoq" path="res://Assets/Enemies/Enemie1/enemy1-Walking.png" id="4_kxqf5"]
+[ext_resource type="PackedScene" uid="uid://y630bbxl1ck7" path="res://Scenes/health.tscn" id="5_odhf1"]
+[ext_resource type="PackedScene" uid="uid://xblrh5kcyqgk" path="res://Scenes/weapon.tscn" id="6_rqbhh"]
+[ext_resource type="Script" path="res://Scripts/Ai.gd" id="7_7pemp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stqxa"]
+size = Vector2(9.5, 18)
+
+[sub_resource type="Animation" id="Animation_pk8a6"]
+resource_name = "Idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_fkugd")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_bqf08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_simp5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.3]
+}
+
+[sub_resource type="Animation" id="Animation_qclg4"]
+resource_name = "Walking"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_kxqf5")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a3mvm"]
+_data = {
+"Idle": SubResource("Animation_pk8a6"),
+"RESET": SubResource("Animation_bqf08"),
+"Walking": SubResource("Animation_qclg4")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm5wm"]
+size = Vector2(135.333, 66.6667)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(3, 3)
+script = ExtResource("1_cfqk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_stqxa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a3mvm")
+}
+autoplay = "Idle"
+speed_scale = 0.3
+
+[node name="Health" parent="." instance=ExtResource("5_odhf1")]
+
+[node name="Weapon" parent="." instance=ExtResource("6_rqbhh")]
+position = Vector2(15.6667, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6.66667, 0)
+texture = ExtResource("2_simp5")
+hframes = 4
+
+[node name="Ai" type="Node2D" parent="."]
+script = ExtResource("7_7pemp")
+
+[node name="PlayerDetectionZone" type="Area2D" parent="Ai"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ai/PlayerDetectionZone"]
+position = Vector2(34, 0.666667)
+shape = SubResource("RectangleShape2D_sm5wm")
+
+[node name="PatrolTimer" type="Timer" parent="Ai"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Ai/PlayerDetectionZone" to="Ai" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Ai/PlayerDetectionZone" to="Ai" method="_on_player_detection_zone_body_exited"]
+[connection signal="timeout" from="Ai/PatrolTimer" to="Ai" method="_on_patrol_timer_timeout"]

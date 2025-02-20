@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bj2llr1tmp1vi"]
+[gd_scene load_steps=15 format=3 uid="uid://bj2llr1tmp1vi"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_cfqk8"]
+[ext_resource type="Script" path="res://Scripts/Actor.gd" id="1_cfqk8"]
 [ext_resource type="Texture2D" uid="uid://dssglxwkbwvnl" path="res://Assets/Mc/main_character-Idle-Sheet.png" id="2_simp5"]
 [ext_resource type="Texture2D" uid="uid://dl1r04kjl0c02" path="res://Assets/Enemies/Enemie1/enemy1-Idle.png" id="3_fkugd"]
 [ext_resource type="Texture2D" uid="uid://cpleceuf1teoq" path="res://Assets/Enemies/Enemie1/enemy1-Walking.png" id="4_kxqf5"]
 [ext_resource type="PackedScene" uid="uid://y630bbxl1ck7" path="res://Scenes/health.tscn" id="5_odhf1"]
 [ext_resource type="PackedScene" uid="uid://xblrh5kcyqgk" path="res://Scenes/weapon.tscn" id="6_rqbhh"]
 [ext_resource type="Script" path="res://Scripts/Ai.gd" id="7_7pemp"]
+[ext_resource type="PackedScene" uid="uid://dghnqjdpgn521" path="res://Scenes/team.tscn" id="8_riio2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stqxa"]
 size = Vector2(9.5, 18)
@@ -176,7 +177,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sm5wm"]
-size = Vector2(90.6667, 49.6667)
+size = Vector2(135.333, 66.6667)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(3, 3)
@@ -205,10 +206,19 @@ hframes = 4
 [node name="Ai" type="Node2D" parent="."]
 script = ExtResource("7_7pemp")
 
-[node name="PlayerDetectionZone" type="Area2D" parent="Ai"]
+[node name="DetectionZone" type="Area2D" parent="Ai"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ai/PlayerDetectionZone"]
-position = Vector2(24.6667, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ai/DetectionZone"]
+position = Vector2(34, 0.666667)
 shape = SubResource("RectangleShape2D_sm5wm")
 
-[connection signal="body_entered" from="Ai/PlayerDetectionZone" to="Ai" method="_on_area_2d_body_entered"]
+[node name="PatrolTimer" type="Timer" parent="Ai"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Team" parent="." instance=ExtResource("8_riio2")]
+team = 1
+
+[connection signal="body_entered" from="Ai/DetectionZone" to="Ai" method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="Ai/DetectionZone" to="Ai" method="_on_detection_zone_body_exited"]
+[connection signal="timeout" from="Ai/PatrolTimer" to="Ai" method="_on_patrol_timer_timeout"]

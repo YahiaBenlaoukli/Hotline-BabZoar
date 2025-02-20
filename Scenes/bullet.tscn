@@ -20,5 +20,7 @@ shape = SubResource("RectangleShape2D_xol70")
 wait_time = 2.0
 autostart = true
 
+[node name="ReloadTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

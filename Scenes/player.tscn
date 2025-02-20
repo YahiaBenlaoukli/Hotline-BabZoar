@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwqyjlh2kydkr"]
+[gd_scene load_steps=17 format=3 uid="uid://bwqyjlh2kydkr"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_8ox1u"]
 [ext_resource type="Texture2D" uid="uid://dssglxwkbwvnl" path="res://Assets/Mc/main_character-Idle-Sheet.png" id="2_0k3q3"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bir7bpflwl8sm" path="res://Assets/Mc/MC_weapon _holding-Idlet.png" id="4_vm4uf"]
 [ext_resource type="PackedScene" uid="uid://xblrh5kcyqgk" path="res://Scenes/weapon.tscn" id="4_wtqv7"]
 [ext_resource type="Texture2D" uid="uid://cttyigbdpj82m" path="res://Assets/Mc/MC_weapon _holding-Walkingt.png" id="5_igvwa"]
+[ext_resource type="PackedScene" uid="uid://dghnqjdpgn521" path="res://Scenes/team.tscn" id="8_rxpwf"]
+[ext_resource type="PackedScene" uid="uid://b3utbucko082w" path="res://Scenes/Cursor.tscn" id="9_uqcwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stqxa"]
 size = Vector2(9.5, 18)
@@ -338,9 +340,24 @@ speed_scale = 0.3
 position = Vector2(8, 0)
 
 [node name="Health" parent="." instance=ExtResource("4_t381o")]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(6, 0)
 texture = ExtResource("2_0k3q3")
 hframes = 4
 metadata/_edit_lock_ = true
+
+[node name="Team" parent="." instance=ExtResource("8_rxpwf")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.13
+drag_top_margin = 0.13
+drag_right_margin = 0.13
+drag_bottom_margin = 0.13
+
+[node name="Cursor" parent="." instance=ExtResource("9_uqcwg")]

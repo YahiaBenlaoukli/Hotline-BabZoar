@@ -1,18 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1813c0kbv37r"]
+[gd_scene load_steps=6 format=3 uid="uid://d1813c0kbv37r"]
 
 [ext_resource type="PackedScene" uid="uid://bwqyjlh2kydkr" path="res://Scenes/player.tscn" id="1_1nbix"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_8tvin"]
-[ext_resource type="PackedScene" uid="uid://b3utbucko082w" path="res://Scenes/Cursor.tscn" id="2_q6o2n"]
 [ext_resource type="PackedScene" uid="uid://bj2llr1tmp1vi" path="res://Scenes/enemy.tscn" id="4_16cdu"]
+[ext_resource type="PackedScene" uid="uid://n0vt2tkd27g7" path="res://Scenes/Ally.tscn" id="5_rq3mc"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="6_kj4tf"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_8tvin")
 
 [node name="Player" parent="." instance=ExtResource("1_1nbix")]
-position = Vector2(236, 127)
-
-[node name="Area2D" parent="." instance=ExtResource("2_q6o2n")]
-position = Vector2(-106, 94)
+position = Vector2(338, 103)
 
 [node name="Enemy" parent="." instance=ExtResource("4_16cdu")]
 position = Vector2(551, 327)
+
+[node name="Ally" parent="." instance=ExtResource("5_rq3mc")]
+position = Vector2(126, 427)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("6_kj4tf")
